@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiCADO - Pendamping Belajar Anak Muslim</title>
+    <meta name="description" content="MiCADO: Pendamping belajar privat untuk anak Muslim. Fokus pada logika, adab, dan materi internasional (Cambridge/MC).">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTS3J5Z0RM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YTS3J5Z0RM');
+    </script>
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --micado-orange: #FF8A00;
+            --micado-orange-soft: #fff0e0;
+            --micado-blue: #0B5FFF;
+            --micado-blue-dark: #0044c2;
+            --micado-cream: #FFFCF9;
+            --text-dark: #1A1A1A;
+            --text-grey: #555555;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--micado-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-image: radial-gradient(#FF8A00 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            background-color: #fffcf9;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 { font-family: var(--font-main); color: var(--text-dark); letter-spacing: -0.02em; }
+        h1 { font-weight: 800; font-size: 2.8rem; line-height: 1.2; margin-bottom: 1rem; color: var(--text-dark); }
+        
+        .text-blue { color: var(--micado-blue); }
+        .text-orange { color: var(--micado-orange); }
+
+        h2 { font-weight: 700; font-size: 2.2rem; margin-bottom: 1rem; text-align: center; }
+
+        .section-subtitle {
+            text-align: center; max-width: 650px; margin: -0.5rem auto 3rem;
+            font-size: 1.05rem; color: var(--text-grey); font-weight: 500; line-height: 1.6;
+        }
+
+        h3 { font-weight: 700; font-size: 1.25rem; margin-bottom: 0.8rem; }
+        p { margin-bottom: 1rem; color: var(--text-grey); font-size: 1rem; }
+
+        /* --- Layout --- */
+        .container { width: 90%; max-width: 1080px; margin: 0 auto; }
+        section { padding: 5rem 0; }
+
+        /* --- Header & Lang Switcher --- */
+        header {
+            padding: 1.2rem 0; background-color: rgba(255, 252, 249, 0.95);
+            backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-placeholder img { height: 36px; }
+
+        /* Language Switcher Style */
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+            margin-right: 15px;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid transparent;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: var(--text-grey);
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background-color: var(--micado-orange-soft);
+            color: var(--micado-orange);
+            border-color: var(--micado-orange);
+        }
+        .right-header-group {
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1rem 2rem; background-color: var(--micado-blue); color: white;
+            text-decoration: none; font-weight: 700; font-size: 1rem; border-radius: 12px;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(11, 95, 255, 0.2); border: none; cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-2px); background-color: var(--micado-blue-dark);
+            box-shadow: 0 6px 20px rgba(11, 95, 255, 0.3);
+        }
+        .btn-secondary {
+            background-color: var(--micado-orange); box-shadow: 0 4px 15px rgba(255, 138, 0, 0.2);
+        }
+        .btn-secondary:hover { background-color: #e67e00; }
+        
+        .btn-outline {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.5rem 1.2rem; background: transparent; color: var(--text-dark);
+            border: 1.5px solid #e0e0e0; text-decoration: none; font-weight: 600;
+            font-size: 0.9rem; border-radius: 10px; transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: var(--micado-blue); color: var(--micado-blue);
+            background-color: rgba(11, 95, 255, 0.05);
+        }
+
+        /* --- Hero --- */
+        #hero { text-align: center; padding-top: 4rem; padding-bottom: 4rem; }
+        .hero-tagline {
+            display: inline-block; background-color: var(--micado-orange-soft);
+            color: var(--micado-orange); padding: 6px 16px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px;
+        }
+        .hero-image-container { position: relative; width: 100%; max-width: 500px; margin: 2rem auto; }
+        .hero-image-wrapper {
+            border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); aspect-ratio: 4/3;
+        }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.02); }
+
+        /* --- Values --- */
+        #values {
+            background: white; border-radius: 40px; margin: 2rem auto; width: 95%;
+            max-width: 1100px; padding: 4rem 2rem; box-shadow: 0 10px 50px rgba(0,0,0,0.02);
+        }
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .value-card {
+            text-align: left; padding: 2rem; border-radius: 20px; background-color: #FAFAFA;
+            transition: all 0.3s ease; border: 1px solid transparent;
+        }
+        .value-card:hover {
+            background-color: white; border-color: rgba(11, 95, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px);
+        }
+        .value-icon {
+            font-size: 1.8rem; color: var(--micado-blue); margin-bottom: 1.2rem;
+            background: rgba(11, 95, 255, 0.08); width: 55px; height: 55px;
+            display: flex; align-items: center; justify-content: center; border-radius: 14px;
+        }
+
+        /* --- Solution --- */
+        #solution { text-align: center; }
+        .solution-box {
+            background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 24px;
+            padding: 2.5rem; display: inline-block; text-align: left;
+            border: 1px solid #eee; max-width: 800px; 
+        }
+        .solution-list { list-style: none; margin: 0; padding: 0; }
+        .solution-list li {
+            margin-bottom: 1.2rem; font-size: 1.05rem; color: var(--text-dark);
+            display: flex; align-items: flex-start;
+        }
+        .check-icon { color: var(--micado-orange); margin-right: 15px; margin-top: 5px; font-size: 1rem; }
+
+        /* --- Invitation --- */
+        #invitation { padding: 3rem 0; }
+        .promo-card {
+            background: #1e293b; color: white; padding: 4rem 2rem; border-radius: 30px;
+            text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .promo-card h2 { color: white; margin-bottom: 1rem; }
+        .promo-card p { color: rgba(255,255,255,0.8); font-size: 1rem; }
+        .promo-badge {
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 16px;
+            border-radius: 30px; font-size: 0.8rem; font-weight: 600; display: inline-block;
+            margin-bottom: 1.5rem; letter-spacing: 1px;
+        }
+        .promo-offer { font-size: 1.4rem; font-weight: 700; margin: 2rem 0; color: var(--micado-orange); }
+
+        /* --- Footer & Sticky --- */
+        footer {
+            background-color: white; padding: 4rem 0; text-align: center; border-top: 1px solid #eee;
+        }
+        footer p { font-size: 0.9rem; }
+        
+        .footer-logo-img {
+            height: 36px;
+            filter: grayscale(100%); /* Membuat logo jadi hitam putih */
+            opacity: 0.5; /* Membuatnya tidak terlalu mencolok */
+            transition: all 0.3s ease;
+        }
+        .footer-logo-img:hover {
+            filter: grayscale(0%); /* Efek hover: kembali berwarna */
+            opacity: 1;
+        }
+
+        .sticky-cta-container {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 450px; z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+        .sticky-cta-container.hidden { transform: translate(-50%, 150%); opacity: 0; }
+        .btn-sticky {
+            width: 100%; padding: 1rem; font-size: 1rem; border-radius: 50px; 
+            background: #1e293b; color: white; border: none; display: flex;
+            align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-weight: 600; text-decoration: none;
+        }
+        .btn-sticky i { color: #25D366; font-size: 1.4rem; margin-right: 10px; }
+
+        /* --- Desktop Media Queries --- */
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; } h2 { font-size: 2.5rem; }
+            .logo-placeholder img { height: 40px; }
+            .footer-logo-img { height: 40px; }
+            
+            section { padding: 6rem 0; }
+            #hero .container { display: flex; align-items: center; text-align: left; gap: 5rem; }
+            .hero-image-container { order: 2; margin: 0; flex: 1; }
+            .hero-content { order: 1; flex: 1.2; }
+            .sticky-cta-container { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <img src="images/micado-logo-orange.png" alt="MiCADO Logo">
+            </div>
+            
+            <div class="right-header-group">
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLang('id'); trackEvent('Language', 'Switch to ID')">ID</button>
+                    <button class="lang-btn" onclick="setLang('en'); trackEvent('Language', 'Switch to EN')">EN</button>
+                </div>
+                
+                <a href="https://wa.me/628131176351?text=Assalamu'alaikum.%20Saya%20ingin%20tanya%20tentang%20pendampingan%20MiCADO." class="btn-outline" target="_blank" data-i18n="cta_contact" onclick="trackEvent('WhatsApp', 'Header Contact')">
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-image-container">
+                <div class="hero-image-wrapper">
+                    <img src="images/hero-child-micado.png" alt="Pendampingan Belajar Anak" class="hero-image">
+                </div>
+            </div>
+            <div class="hero-content">
+                <span class="hero-tagline" data-i18n="hero_tagline">Your Child's Learning Buddy</span>
+                
+                <h1 data-i18n="hero_title">Cerdas bernalar, <span class="text-blue">mulia beradab</span></h1>
+                
+                <p style="font-size: 1.1rem; color: var(--text-grey); margin-bottom: 1.5rem;" data-i18n="hero_desc">
+                    Membangun generasi yang cerdas akalnya dan santun perangainya. MiCADO hadir sebagai teman belajar yang amanah untuk buah hati Ayah dan Bunda.
+                </p>
+
+                <div style="margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">
+                    <span style="background: #eef4ff; color: var(--micado-blue); padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(11, 95, 255, 0.2);">
+                        <i class="fa-solid fa-language" style="margin-right:6px;"></i> <span data-i18n="pill_bilingual">Bilingual Support</span>
+                    </span>
+                    
+                    <span style="background: #eef4ff; color: var(--micado-blue); padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(11, 95, 255, 0.2);">
+                        <i class="fa-solid fa-book-open" style="margin-right:6px;"></i> <span data-i18n="pill_curriculum">Materi Cambridge, MC, dan IB</span>
+                    </span>
+                </div>
+                
+                <div class="desktop-cta">
+                    <a href="https://wa.me/628131176351?text=Assalamu'alaikum.%20Saya%20ingin%20berdiskusi%20tentang%20kebutuhan%20belajar%20anak%20saya." class="btn track-cta" target="_blank" data-i18n="cta_hero" onclick="trackEvent('WhatsApp', 'Hero CTA')">
+                        Mulai Diskusi dengan Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="values">
+        <div class="container">
+            <h2 data-i18n="values_title">Pendekatan Kami</h2>
+            
+            <p class="section-subtitle" data-i18n="values_subtitle">
+                Setiap anak itu unik dan istimewa. Kami mendampingi sesuai fitrah dan ritme belajar anak, tanpa paksaan, namun tetap terarah.
+            </p>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 data-i18n="val1_title">Adab Sebelum Ilmu</h3>
+                    <p data-i18n="val1_desc">Kami memulai dengan sapaan hangat dan doa. Menjaga tutur kata yang santun agar hati anak tenang saat menerima ilmu.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 data-i18n="val2_title">Melatih Nalar & Logika</h3>
+                    <p data-i18n="val2_desc">Bukan sekadar hafal rumus. Tutor mengajak anak berpikir runtut (logis) dalam memecahkan masalah, bekal penting untuk masa depannya.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h3 data-i18n="val3_title">Pendampingan Personal</h3>
+                    <p data-i18n="val3_desc">Satu anak, satu fokus perhatian. Kami menyesuaikan cara mengajar dengan karakter buah hati Ayah Bunda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div class="container">
+            <div class="solution-box">
+                <h2 style="text-align: left; margin-bottom: 0.5rem; font-size: 2rem;" data-i18n="sol_title">Apa yang MiCADO Lakukan?</h2>
+                <p style="margin-bottom: 2rem;" data-i18n="sol_subtitle">Menemani proses tumbuh kembang anak dalam belajar akademik dan karakter.</p>
+                
+                <ul class="solution-list">
+                    <li>
+                        <i class="fa-solid fa-circle-check check-icon"></i>
+                        <span data-i18n="sol_list1"><strong>Teman Belajar Bilingual:</strong> Mengajak anak berani bicara dalam Bahasa Inggris & Indonesia secara natural, tanpa takut salah.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check check-icon"></i>
+                        <span data-i18n="sol_list2"><strong>Bantuan Materi Sekolah:</strong> Siap membantu PR atau pendalaman materi (mengakomodasi kurikulum Cambridge, MC, dan IB) agar anak lebih percaya diri di sekolah.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check check-icon"></i>
+                        <span data-i18n="sol_list3"><strong>Suasana Belajar Tenang:</strong> Belajar tanpa drama dan tekanan. Kami membangun rasa aman agar anak nyaman bertanya apa saja.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check check-icon"></i>
+                        <span data-i18n="sol_list4"><strong>Cerita Perkembangan Anak:</strong> Kami rutin berbagi update ke Ayah Bunda, bukan hanya soal nilai, tapi juga kemajuan sikap dan adabnya.</span>
+                    </li>
+                </ul>
+
+                <div style="margin-top: 2rem;">
+                    <a href="https://wa.me/628131176351?text=Assalamu'alaikum.%20Saya%20ingin%20kenalan%20lebih%20lanjut%20dengan%20kakak%20Tutor%20MiCADO." class="btn btn-secondary track-cta" target="_blank" data-i18n="cta_tutor" onclick="trackEvent('WhatsApp', 'Tutor Profile CTA')">
+                        Ingin Kenalan dengan Kakak Tutor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="invitation">
+        <div class="container">
+            <div class="promo-card">
+                <span class="promo-badge" data-i18n="promo_badge">PENDAMPINGAN EKSKLUSIF</span>
+                <h2 data-i18n="promo_title">Mari Bersinergi untuk Buah Hati</h2>
+                <p data-i18n="promo_desc">Agar setiap anak mendapatkan perhatian yang amanah dan maksimal, kami membatasi jumlah pendampingan setiap periodenya.</p>
+                
+                <div class="promo-offer" data-i18n="promo_offer">
+                    Sesi Perkenalan Tanpa Biaya
+                </div>
+                
+                <a href="https://wa.me/628131176351?text=Assalamu'alaikum.%20Saya%20ingin%20menjadwalkan%20sesi%20perkenalan%20untuk%20anak%20saya." class="btn track-cta" style="background: white; color: var(--text-dark);" target="_blank" data-i18n="cta_schedule" onclick="trackEvent('WhatsApp', 'Schedule Session CTA')">
+                    Jadwalkan Sesi Perkenalan
+                </a>
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.6;" data-i18n="promo_note">*Prioritas untuk keluarga yang mendaftar lebih awal</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="sticky-cta-container" id="stickyCta">
+        <a href="https://wa.me/628131176351?text=Assalamu'alaikum.%20Saya%20mau%20tanya-tanya%20tentang%20MiCADO." class="btn-sticky" target="_blank" data-i18n="cta_sticky" onclick="trackEvent('WhatsApp', 'Mobile Sticky CTA')">
+            <i class="fa-brands fa-whatsapp"></i>
+            Tanya via WhatsApp
+        </a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="logo-placeholder" style="justify-content: center; margin-bottom: 1rem;">
+                <img src="images/micado-logo-orange.png" alt="MiCADO Logo" class="footer-logo-img">
+            </div>
+            <p style="color: var(--text-grey); font-weight: 600; margin-bottom: 0.5rem;" data-i18n="footer_tagline">MiCADO — Your Child's Learning Buddy</p>
+            <p style="font-size: 0.95rem; color: #999; font-weight: 500;" data-i18n="footer_sub">Cerdas Bernalar, Mulia Beradab</p>
+            <p style="font-size: 0.85rem; color: #aaa; margin-top: 1.5rem;">© 2025 MiCADO Education. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. SETUP TRACKING ---
+        function trackEvent(category, label) {
+            console.log(`Tracking Event: ${category} - ${label}`);
+            
+            // JIKA SUDAH PASANG GOOGLE ANALYTICS 4 (GA4):
+            // Script ini akan mengirim data event ke dashboard GA4 secara otomatis
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+        }
+
+        // --- 2. DATA TERJEMAHAN (ID & EN) ---
+        const translations = {
+            id: {
+                cta_contact: "Hubungi Kami",
+                hero_tagline: "Your Child's Learning Buddy",
+                hero_title: "Cerdas bernalar, <span class='text-blue'>mulia beradab</span>",
+                hero_desc: "Membangun generasi yang cerdas akalnya dan santun perangainya. MiCADO hadir sebagai teman belajar yang amanah untuk buah hati Ayah dan Bunda.",
+                pill_bilingual: "Bilingual Support",
+                pill_curriculum: "Materi Cambridge, MC, dan IB",
+                cta_hero: "Mulai Diskusi dengan Kami",
+                values_title: "Pendekatan Kami",
+                values_subtitle: "Setiap anak itu unik dan istimewa. Kami mendampingi sesuai fitrah dan ritme belajar anak, tanpa paksaan, namun tetap terarah.",
+                val1_title: "Adab Sebelum Ilmu",
+                val1_desc: "Kami memulai dengan sapaan hangat dan doa. Menjaga tutur kata yang santun agar hati anak tenang saat menerima ilmu.",
+                val2_title: "Melatih Nalar & Logika",
+                val2_desc: "Bukan sekadar hafal rumus. Tutor mengajak anak berpikir runtut (logis) dalam memecahkan masalah, bekal penting untuk masa depannya.",
+                val3_title: "Pendampingan Personal",
+                val3_desc: "Satu anak, satu fokus perhatian. Kami menyesuaikan cara mengajar dengan karakter buah hati Ayah Bunda.",
+                sol_title: "Apa yang MiCADO Lakukan?",
+                sol_subtitle: "Menemani proses tumbuh kembang anak dalam belajar akademik dan karakter.",
+                sol_list1: "<strong>Teman Belajar Bilingual:</strong> Mengajak anak berani bicara dalam Bahasa Inggris & Indonesia secara natural, tanpa takut salah.",
+                sol_list2: "<strong>Bantuan Materi Sekolah:</strong> Siap membantu PR atau pendalaman materi (mengakomodasi kurikulum Cambridge, MC, dan IB) agar anak lebih percaya diri di sekolah.",
+                sol_list3: "<strong>Suasana Belajar Tenang:</strong> Belajar tanpa drama dan tekanan. Kami membangun rasa aman agar anak nyaman bertanya apa saja.",
+                sol_list4: "<strong>Cerita Perkembangan Anak:</strong> Kami rutin berbagi update ke Ayah Bunda, bukan hanya soal nilai, tapi juga kemajuan sikap dan adabnya.",
+                cta_tutor: "Ingin Kenalan dengan Kakak Tutor",
+                promo_badge: "PENDAMPINGAN EKSKLUSIF",
+                promo_title: "Mari Bersinergi untuk Buah Hati",
+                promo_desc: "Agar setiap anak mendapatkan perhatian yang amanah dan maksimal, kami membatasi jumlah pendampingan setiap periodenya.",
+                promo_offer: "Sesi Perkenalan Tanpa Biaya",
+                cta_schedule: "Jadwalkan Sesi Perkenalan",
+                promo_note: "*Prioritas untuk keluarga yang mendaftar lebih awal",
+                cta_sticky: "<i class='fa-brands fa-whatsapp'></i> Tanya via WhatsApp",
+                footer_tagline: "MiCADO — Your Child's Learning Buddy",
+                footer_sub: "Cerdas Bernalar, Mulia Beradab"
+            },
+            en: {
+                cta_contact: "Contact Us",
+                hero_tagline: "Your Child's Learning Buddy",
+                hero_title: "Intelligent Minds, <span class='text-blue'>Noble Hearts</span>",
+                hero_desc: "Nurturing a generation that is sharp in mind and polite in demeanor. MiCADO is here as a trustworthy learning buddy for your beloved child.",
+                pill_bilingual: "Bilingual Support",
+                pill_curriculum: "Cambridge, MC, & IB Materials",
+                cta_hero: "Start Discussion with Us",
+                values_title: "Our Approach",
+                values_subtitle: "Every child is unique and special. We guide them according to their nature and learning rhythm, without pressure, yet with clear direction.",
+                val1_title: "Character Before Knowledge",
+                val1_desc: "We start with warm greetings and prayer. Maintaining polite language so the child's heart is calm and ready to receive knowledge.",
+                val2_title: "Training Logic & Reasoning",
+                val2_desc: "More than just memorizing formulas. Our tutors guide children to think logically in solving problems, an essential skill for their future.",
+                val3_title: "Personalized Guidance",
+                val3_desc: "One child, one focus. We adapt our teaching methods to match the unique character of your beloved child.",
+                sol_title: "What Does MiCADO Do?",
+                sol_subtitle: "Accompanying your child's growth process in both academic learning and character building.",
+                sol_list1: "<strong>Bilingual Learning Buddy:</strong> Encouraging children to speak in English & Indonesian naturally, without the fear of making mistakes.",
+                sol_list2: "<strong>School Subject Support:</strong> Ready to assist with homework or deep diving into materials (accommodating Cambridge, MC, and IB curriculums) to boost confidence at school.",
+                sol_list3: "<strong>Calm Learning Atmosphere:</strong> Learning without drama or pressure. We build a safe space so children feel comfortable asking anything.",
+                sol_list4: "<strong>Child Development Updates:</strong> We routinely share updates with Parents, not just about grades, but also progress in attitude and manners.",
+                cta_tutor: "Get to Know the Tutor",
+                promo_badge: "EXCLUSIVE MENTORSHIP",
+                promo_title: "Let's Collaborate for Your Child",
+                promo_desc: "To ensure every child receives trustworthy and maximum attention, we limit the number of students each period.",
+                promo_offer: "Complimentary Intro Session",
+                cta_schedule: "Schedule Intro Session",
+                promo_note: "*Priority for families who register early",
+                cta_sticky: "<i class='fa-brands fa-whatsapp'></i> Ask via WhatsApp",
+                footer_tagline: "MiCADO — Your Child's Learning Buddy",
+                footer_sub: "Intelligent Minds, Noble Hearts"
+            }
+        };
+
+        // --- 3. FUNGSI GANTI BAHASA ---
+        function setLang(lang) {
+            // Update Text Elements
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update Button States (Visual Active State)
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Set tombol aktif yang sesuai
+            const activeBtn = document.querySelector(`.lang-btn[onclick*="'${lang}'"]`);
+            if(activeBtn) activeBtn.classList.add('active');
+        }
+
+        // --- 4. LOGIKA UTAMA (STICKY BUTTON & INIT) ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cek lebar layar untuk sticky button (Mobile only feature)
+            if (window.innerWidth >= 768) return;
+
+            const stickyCta = document.getElementById('stickyCta');
+            const trackedButtons = document.querySelectorAll('.track-cta');
+
+            const options = { root: null, threshold: 0.1 };
+
+            // Logic: Sembunyikan sticky button jika ada tombol CTA lain yang terlihat di layar
+            const observerCallback = (entries) => {
+                let isAnyButtonVisible = false;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { isAnyButtonVisible = true; }
+                });
+                if (isAnyButtonVisible) { stickyCta.classList.add('hidden'); }
+                else { stickyCta.classList.remove('hidden'); }
+            };
+
+            const observer = new IntersectionObserver(observerCallback, options);
+            trackedButtons.forEach(button => { observer.observe(button); });
+        });
+    </script>
+
+</body>
+</html>
