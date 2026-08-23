@@ -13,7 +13,6 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="MiCADO Education">
     <meta name="language" content="id">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://busibushe.github.io/micado-website/">
     
     <!-- Open Graph / WhatsApp / Facebook -->
@@ -236,7 +235,7 @@
             transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
             opacity: 0;
             margin-top: 0;
-            padding: 0 6px; /* Padding samping untuk mencegah terpotongnya shadow */
+            padding: 0 6px;
         }
         .program-expandable.open {
             opacity: 1;
@@ -307,14 +306,9 @@
             gap: 8px;
             line-height: 1.4;
         }
-        .program-bullets-min li:last-child {
-            margin-bottom: 0;
-        }
+        .program-bullets-min li:last-child { margin-bottom: 0; }
         .program-bullets-min li i {
-            color: var(--micado-orange);
-            font-size: 0.75rem;
-            margin-top: 4px;
-            flex-shrink: 0;
+            color: var(--micado-orange); font-size: 0.75rem; margin-top: 4px; flex-shrink: 0;
         }
 
         /* --- Solution --- */
@@ -330,6 +324,32 @@
             display: flex; align-items: flex-start;
         }
         .check-icon { color: var(--micado-orange); margin-right: 15px; margin-top: 5px; font-size: 1rem; }
+
+        /* --- Student Schools Section --- */
+        #schools { padding: 4rem 0 2rem; }
+        #schools h2 { color: var(--micado-blue-dark); margin-bottom: 0.5rem; }
+        .logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem; /* Jarak diperbesar agar tidak sumpek */
+            margin-top: 2.5rem;
+        }
+        .school-logo {
+            height: auto;
+            max-height: 55px; /* Membatasi logo persegi agar tidak terlalu tinggi */
+            max-width: 150px; /* Memberi ruang untuk logo horizontal */
+            object-fit: contain;
+            filter: grayscale(100%); /* Membuat logo menjadi abu-abu seragam */
+            opacity: 0.6; /* Membuatnya sedikit transparan */
+            transition: all 0.3s ease;
+        }
+        .school-logo:hover {
+            filter: grayscale(0%); /* Warna asli muncul saat kursor diarahkan */
+            opacity: 1;
+            transform: scale(1.08); /* Efek membesar */
+        }
 
         /* --- Invitation --- */
         #invitation { padding: 3rem 0; }
@@ -415,6 +435,7 @@
             
             .right-header-group { gap: 20px; }
             .btn-outline { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
+            .school-logo { height: 60px; }
         }
 
         @media (max-width: 767px) {
@@ -526,7 +547,7 @@
                 </button>
             </div>
 
-            <!-- Expandable Program Belajar Container (Padding Bottom Ditingkatkan) -->
+            <!-- Expandable Program Belajar Container -->
             <div id="program-expandable" class="program-expandable">
                 <div style="border-top: 1px dashed #e0e0e0; padding-top: 1.8rem; padding-bottom: 2rem; margin-top: 1rem;">
                     <div class="program-grid-min">
@@ -639,7 +660,27 @@
         </div>
     </section>
 
-    <!-- SECTION INVITATION -->
+    <!-- SECTION ASAL SEKOLAH SISWA -->
+    <section id="schools">
+        <div class="container" style="text-align: center;">
+            <h2 data-i18n="schools_title">Belajar Bersama MiCADO</h2>
+            <p class="section-subtitle" data-i18n="schools_subtitle">
+                Setiap anak datang dengan kebutuhan belajar yang berbeda.
+            </p>
+            
+            <div class="logo-row">
+                <!-- Sesuaikan path dan nama file gambar dengan yang ada di folder 'images' Anda -->
+                <img src="images/logo-cikal.png" alt="Sekolah Cikal" class="school-logo">
+                <img src="images/logo-global-prestasi.png" alt="Global Prestasi School" class="school-logo">
+                <img src="images/logo-kreativa.png" alt="Kreativa Global School" class="school-logo">
+                <img src="images/logo-cendekia-muda.png" alt="Cendekia Muda" class="school-logo">
+                <img src="images/logo-al-wildan.png" alt="Al Wildan Islamic School" class="school-logo">
+                <img src="images/logo-al-fath.png" alt="Al Fath Cirendeu" class="school-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION INVITATION (CTA PENUTUP) -->
     <section id="invitation">
         <div class="container">
             <div class="promo-card">
@@ -664,7 +705,7 @@
             <p class="section-subtitle" data-i18n="faq_subtitle">Pertanyaan seputar pendampingan belajar di MiCADO.</p>
 
             <div class="faq-wrapper">
-                <!-- Q1 -->
+                <!-- FAQ Items -->
                 <div class="faq-item">
                     <button class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-1">
                         <span data-i18n="faq_q1">Apakah tersedia pembelajaran offline dan online?</span>
@@ -677,7 +718,6 @@
                     </div>
                 </div>
 
-                <!-- Q2 -->
                 <div class="faq-item">
                     <button class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2">
                         <span data-i18n="faq_q2">Berapa lama durasi satu sesi dan bagaimana jadwalnya?</span>
@@ -690,7 +730,6 @@
                     </div>
                 </div>
 
-                <!-- Q3 -->
                 <div class="faq-item">
                     <button class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3">
                         <span data-i18n="faq_q3">Bagaimana ketentuan dan biaya untuk sesi trial?</span>
@@ -703,7 +742,6 @@
                     </div>
                 </div>
 
-                <!-- Q4 -->
                 <div class="faq-item">
                     <button class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4">
                         <span data-i18n="faq_q4">Apakah materi belajar bisa digabung dan bagaimana pengantar bahasanya?</span>
@@ -716,7 +754,6 @@
                     </div>
                 </div>
 
-                <!-- Q5 -->
                 <div class="faq-item">
                     <button class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-5">
                         <span data-i18n="faq_q5">Apakah bisa request gender tutor dan bagaimana laporan perkembangannya?</span>
@@ -754,12 +791,8 @@
         // --- 1. SETUP TRACKING ---
         function trackEvent(category, label) {
             console.log(`Tracking Event: ${category} - ${label}`);
-            
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'click', {
-                    'event_category': category,
-                    'event_label': label
-                });
+                gtag('event', 'click', { 'event_category': category, 'event_label': label });
             }
         }
 
@@ -770,6 +803,10 @@
                 hero_tagline: "Your Child's Learning Buddy",
                 hero_title: "Cerdas bernalar, <span class='text-blue'>mulia beradab</span>",
                 hero_desc: "Membangun generasi yang cerdas akalnya dan santun perangainya. MiCADO hadir sebagai teman belajar yang amanah untuk buah hati Ayah dan Bunda.",
+
+                // Teks Terjemahan untuk Section Logo Sekolah
+                schools_title: "Belajar Bersama MiCADO",
+                schools_subtitle: "Setiap anak datang dengan kebutuhan belajar yang berbeda.",
 
                 values_title: "Pendekatan Personal",
                 values_subtitle: "Setiap anak tumbuh dan belajar dengan keunikannya. MiCADO menghadirkan pendampingan utuh yang berfokus pada adab, pemikiran logis, serta kebutuhan personal anak.",
@@ -782,17 +819,14 @@
 
                 btn_see_programs: "Lihat Program Belajar",
                 btn_hide_programs: "Tutup Program Belajar",
-
                 prog1_title: "Math & Science",
                 prog1_desc: "Penguatan pemahaman konsep matematika dan sains sekolah dengan pendekatan yang logis dan tidak sekadar menghafal.",
                 prog1_bullet1: "Acuan Cambridge, IB, MC, & Kurikulum Merdeka",
                 prog1_bullet2: "Dukungan tugas sekolah hingga persiapan olimpiade",
-
                 prog2_title: "English",
                 prog2_desc: "Membangun keberanian dan kelancaran anak dalam berkomunikasi Bahasa Inggris secara natural dan percaya diri.",
                 prog2_bullet1: "Acuan Cambridge, Pearson, & Oxford",
                 prog2_bullet2: "Speaking, Reading, Writing, & Public Speaking",
-
                 prog3_title: "Coding & STEAM",
                 prog3_desc: "Melatih pemikiran komputasional dan kreativitas melalui proyek digital interaktif yang menyenangkan.",
                 prog3_bullet1: "ScratchJr, OctoStudio, & Scratch 3.0",
@@ -835,6 +869,10 @@
                 hero_title: "Think clearly, <span class='text-blue'>grow with character</span>",
                 hero_desc: "MiCADO supports children in developing strong reasoning and good character through a thoughtful and trustworthy learning experience.",
 
+                // English Translation for Schools Logo Section
+                schools_title: "Learning with MiCADO",
+                schools_subtitle: "Every child comes with different learning needs.",
+
                 values_title: "Personalized Approach",
                 values_subtitle: "Every child grows and learns in their own unique way. MiCADO provides holistic guidance focused on character, logical thinking, and personal needs.",
                 val1_title: "Character Before Knowledge",
@@ -846,17 +884,14 @@
 
                 btn_see_programs: "View Learning Programs",
                 btn_hide_programs: "Hide Learning Programs",
-
                 prog1_title: "Math & Science",
                 prog1_desc: "Strengthening math and science conceptual understanding through logical thinking rather than rote memorization.",
                 prog1_bullet1: "Cambridge, IB, MC, & National Curricula",
                 prog1_bullet2: "School subject support & competition prep",
-
                 prog2_title: "English",
                 prog2_desc: "Building children's confidence and fluency in English communication in a natural environment.",
                 prog2_bullet1: "Cambridge, Pearson, & Oxford framework",
                 prog2_bullet2: "Speaking, Reading, Writing, & Public Speaking",
-
                 prog3_title: "Coding & STEAM",
                 prog3_desc: "Developing computational logic and creativity through interactive and enjoyable digital projects.",
                 prog3_bullet1: "ScratchJr, OctoStudio, & Scratch 3.0",
@@ -929,7 +964,6 @@
 
             if (!isOpen) {
                 progDiv.classList.add('open');
-                // Penambahan ekstra offset height (30px) agar padding-bottom aman & tidak terpotong
                 progDiv.style.maxHeight = (progDiv.scrollHeight + 30) + "px";
                 icon.style.transform = "rotate(180deg)";
                 btnSpan.innerHTML = translations[currentLang]['btn_hide_programs'];
